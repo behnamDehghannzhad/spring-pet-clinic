@@ -1,0 +1,8 @@
+spring\webapp\petclinic\model\Owner.class
+spring\webapp\petclinic\model\Pet.class
+spring\webapp\petclinic\model\PetType.class
+spring\webapp\petclinic\model\Vet.class
+spring\webapp\petclinic\servies\PetService.class
+spring\webapp\petclinic\model\Person.class
+spring\webapp\petclinic\servies\OwnerService.class
+spring\webapp\petclinic\servies\VetService.class
