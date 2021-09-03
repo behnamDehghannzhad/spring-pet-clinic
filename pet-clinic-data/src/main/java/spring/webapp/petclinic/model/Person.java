@@ -1,4 +1,4 @@
-package model;
+package spring.webapp.petclinic.model;
 
 public class Person {
 
