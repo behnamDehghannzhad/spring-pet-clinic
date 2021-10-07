@@ -1,8 +1,14 @@
-spring\webapp\petclinic\model\Owner.class
+spring\webapp\petclinic\servies\map\VetMapService.class
 spring\webapp\petclinic\model\Pet.class
+spring\webapp\petclinic\servies\CrudService.class
+spring\webapp\petclinic\servies\PetService.class
+spring\webapp\petclinic\servies\map\PetMapService.class
+spring\webapp\petclinic\servies\VetService.class
+spring\webapp\petclinic\model\Owner.class
+spring\webapp\petclinic\model\BaseEntity.class
 spring\webapp\petclinic\model\PetType.class
 spring\webapp\petclinic\model\Vet.class
-spring\webapp\petclinic\servies\PetService.class
+spring\webapp\petclinic\servies\map\AbstractMapService.class
+spring\webapp\petclinic\servies\map\OwnerMapService.class
 spring\webapp\petclinic\model\Person.class
 spring\webapp\petclinic\servies\OwnerService.class
-spring\webapp\petclinic\servies\VetService.class
