@@ -35,17 +35,16 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner save(Owner owner) {
         if (Objects.nonNull(owner)) {
-            Set<Pet> pets = saveOwnerPets(owner.getPets());
-            owner.setPets(pets);
+            saveOwnerPets(owner.getPets());
             return super.save(owner);
         } else {
             return null;
         }
     }
 
-    private Set<Pet> saveOwnerPets(Set<Pet> pets) {
+    private void saveOwnerPets(Set<Pet> pets) {
         pets.forEach(pet -> {
-            if (Objects.nonNull(pet.getPetType())) {
+            if (Objects.nonNull(pet.getPetType()) && Objects.nonNull(pet.getPetType().getId())) {
                 pet.setPetType(petTypeService.save(pet.getPetType()));
             } else {
                 throw new RuntimeException("Pet Type is Required");
@@ -54,7 +53,6 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
             Pet savedPet = petService.save(pet);
             pet.setId(savedPet.getId());
         });
-        return pets;
     }
 
     @Override
