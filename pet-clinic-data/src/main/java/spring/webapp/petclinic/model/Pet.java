@@ -1,13 +1,26 @@
 package spring.webapp.petclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity{
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "birthDate")
     private LocalDate birthDate;
+
+    @ManyToOne
+    @JoinColumn(name = "petType")
     private PetType petType;
+
+    @ManyToOne
+    @JoinColumn(name = "owner")
     private Owner owner;
+
 
     public String getName() {
         return name;
