@@ -25,7 +25,7 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    public Set<Owner>findAll() {
+    public Set<Owner> findAll() {
         return super.findAll();
     }
 
@@ -45,16 +45,18 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     }
 
     private void saveOwnerPets(Set<Pet> pets) {
-        pets.forEach(pet -> {
-            if (Objects.nonNull(pet.getPetType()) && Objects.nonNull(pet.getPetType().getId())) {
-                pet.setPetType(petTypeService.save(pet.getPetType()));
-            } else {
-                throw new RuntimeException("Pet Type is Required");
-            }
+        if (Objects.nonNull(pets)) {
+            pets.forEach(pet -> {
+                if (Objects.nonNull(pet.getPetType()) && Objects.nonNull(pet.getPetType().getId())) {
+                    pet.setPetType(petTypeService.save(pet.getPetType()));
+                } else {
+                    throw new RuntimeException("Pet Type is Required");
+                }
 
-            Pet savedPet = petService.save(pet);
-            pet.setId(savedPet.getId());
-        });
+                Pet savedPet = petService.save(pet);
+                pet.setId(savedPet.getId());
+            });
+        }
     }
 
     @Override
@@ -69,6 +71,9 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return findAll().stream()
+                .filter(owner -> Objects.equals(owner.getLastName(), lastName))
+                .findFirst()
+                .orElse(null);
     }
 }
